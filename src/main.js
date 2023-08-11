@@ -9,6 +9,7 @@ import dotenv from 'dotenv';
 import imagenesRoutes from './routes/imagenesRoutes.js';
 import { fileURLToPath } from 'url';
 import homeRoutes from './routes/homeRoutes.js';
+import fileUpload from 'express-fileupload';
 
 
 //Configuraciones
@@ -34,6 +35,7 @@ app.use(cors());
 app.use(morgan());
 app.use(helmet());
 app.use(express.json());
+app.use(fileUpload());
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));

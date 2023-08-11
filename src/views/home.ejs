@@ -11,10 +11,12 @@
     <main class="vh-100">
         <div class="container d-flex flex-column h-100">
             <h1 class="text-center m-3 titulo fw-bold">Upload to Cloudinary</h1>
-            <form enctype="multipart/form-data" class="formulario shadow p-3 m-auto d-flex justify-content-center align-items-center">
+            <form enctype="multipart/form-data" class="formulario shadow p-3 m-auto d-flex justify-content-center align-items-center flex-column flex-sm-row flex-lg-row">
                 <input type="file" name="photo" accept="image/*" class="form-control">
-                <input type="submit" value="Upload" class="btn boton submit mx-2">
-                <input type="reset" value="Reset" class="btn boton reset ">
+                <div class="my-2 d-flex ">
+                    <input type="submit" value="Upload" class="btn boton submit mx-2">
+                    <input type="reset" value="Reset" class="btn boton reset ">
+                </div>
             </form>
         </div>
     </main>
