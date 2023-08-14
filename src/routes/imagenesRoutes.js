@@ -1,7 +1,8 @@
 import express from "express";
-import { uploadImage } from "../controllers/imageController.js";
+import { uploadImage, deleteImage, getAllImages } from "../controllers/imageController.js";
 const router = express.Router();
 
 router.post("/upload", uploadImage);
+router.get('/getAll', getAllImages)
 
 export default router;

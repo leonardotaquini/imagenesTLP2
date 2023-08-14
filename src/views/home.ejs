@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <main class="vh-100">
-        <div class="container d-flex flex-column h-100">
-            <h1 class="text-center m-3 titulo fw-bold">Upload to Cloudinary</h1>
+    <main class="vh-100 d-flex flex-column justify-content-around align-items-center">
+        <h1 class="text-center m-3 titulo fw-bold">Upload to Cloudinary</h1>
+        <div class="container d-flex flex-column m-auto ">
             <form enctype="multipart/form-data" class="formulario shadow p-3 m-auto d-flex justify-content-center align-items-center flex-column flex-sm-row flex-lg-row">
                 <input type="file" name="photo" accept="image/*" class="form-control">
                 <div class="my-2 d-flex ">
@@ -18,8 +18,19 @@
                     <input type="reset" value="Reset" class="btn boton reset ">
                 </div>
             </form>
+            <div class="preview-container">
+
+            </div>
+            <div class="spinner-border text-primary m-auto off spinner-upload" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
         </div>
+        <button class="btn boton showImages  mx-2 col-10 col-sm-3 col-lg-3 text-center my-5 ">Show all</button>
     </main>
+    <h2 class="text-center fw-bold"> Gallery</h2>
+    <article class="images col-12 d-flex flex-wrap align-items-center justify-content-center ">
+    </article>
     <script src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

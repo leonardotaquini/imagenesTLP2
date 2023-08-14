@@ -1,7 +1,6 @@
 //Imports
 import express from 'express';
 import morgan from 'morgan';
-import helmet from 'helmet';
 import path from 'path';
 import {v2 as cloudinary} from 'cloudinary';
 import cors from 'cors';
@@ -10,6 +9,7 @@ import imagenesRoutes from './routes/imagenesRoutes.js';
 import { fileURLToPath } from 'url';
 import homeRoutes from './routes/homeRoutes.js';
 import fileUpload from 'express-fileupload';
+import conectarDB from './config/db.js';
 
 
 //Configuraciones
@@ -33,9 +33,10 @@ app.set('view engine', 'ejs');
 //Middlewares
 app.use(cors());
 app.use(morgan());
-app.use(helmet());
 app.use(express.json());
 app.use(fileUpload());
+
+conectarDB();
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));
