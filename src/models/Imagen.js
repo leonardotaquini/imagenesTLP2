@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import { body } from "express-validator";
+
+
 
 const imagenSchema = new mongoose.Schema({
     url: {
@@ -12,6 +15,12 @@ const imagenSchema = new mongoose.Schema({
         trim:true,
     }
 });
+
+export const createImageSchema = [
+    body("url").not().isEmpty().withMessage("La url es obligatoria"),
+    body("nombre").not().isEmpty().withMessage("El nombre es obligatorio"),
+
+]
 
 const Imagen = mongoose.model("Imagen", imagenSchema);
 

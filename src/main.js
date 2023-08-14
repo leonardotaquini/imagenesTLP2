@@ -36,7 +36,6 @@ app.use(morgan());
 app.use(express.json());
 app.use(fileUpload());
 
-conectarDB();
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));
@@ -47,6 +46,8 @@ app.use('/api/imagenes', imagenesRoutes);
 app.use( homeRoutes );
 
 app.listen(PORT, ()=> {
-    console.log(`Servidor escuchando en el puerto ${PORT}`)
+  console.log(`Servidor escuchando en el puerto ${PORT}`)
+  //Conexion a la db
+  conectarDB();
 });
           

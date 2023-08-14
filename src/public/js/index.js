@@ -30,7 +30,8 @@ uploadForm.addEventListener("submit", async (e) => {
       text: 'No se proporcionó ningún archivo',
       icon: 'error',
       confirmButtonText: 'Volver a intentar'
-    })
+    });
+
     return;
   }
   
