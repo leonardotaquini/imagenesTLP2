@@ -7,15 +7,18 @@ const previewContainer = document.querySelector(".preview-container");
 
 // Eventos
 
+//Carga las imagenes en el DOM
 document.addEventListener("DOMContentLoaded", async () => {
   showAllImages();
 });
 
+//Boton para mostrar todas las imagenes
 showImages.addEventListener("click", async (e) => {
   e.preventDefault();
   showAllImages();
 });
 
+//Subir imagen
 uploadForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   
@@ -37,10 +40,12 @@ uploadForm.addEventListener("submit", async (e) => {
   
   try {
     mostrarSpinner();
+
     const res = await fetch("/api/imagenes/upload", {
       method: "POST",
       body: formData,
     });
+
     if(res.status === 201){
       Swal.fire({
         title: 'Exito!',
@@ -48,6 +53,7 @@ uploadForm.addEventListener("submit", async (e) => {
         icon: 'success',
         confirmButtonText: 'Subir otra imagen'
       });
+      previewContainer.innerHTML = "";
     }else{
       Swal.fire({
         title: 'Error!',
@@ -73,12 +79,14 @@ uploadForm.addEventListener("submit", async (e) => {
   uploadForm.reset();
 });
 
+//Reset
 resetBtn.addEventListener("click", (e) => {
   e.preventDefault();
   uploadForm.reset();
   previewContainer.innerHTML = "";
 });
 
+//Pre-carga la imagen.
 uploadForm.addEventListener("change", (e) => {
   e.preventDefault();
   const file = e.target.files[0];
@@ -127,4 +135,3 @@ const ocultarSpinner = () => {
   spinner.classList.remove("on");
 
 }
-

@@ -4,7 +4,7 @@ import { uploadImage, getAllImages } from "../controllers/imageController.js";
 import { applyImageValidation } from "../middlewares/imageMiddleware.js";
 const router = express.Router();
 
-router.post("/upload", createImageSchema, applyImageValidation , uploadImage);
+router.post("/upload", uploadImage);
 router.get('/getAll', getAllImages)
 
 export default router;
