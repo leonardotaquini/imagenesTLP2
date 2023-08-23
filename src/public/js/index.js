@@ -117,9 +117,20 @@ const showAllImages = async () => {
   }
   data.images.map((image) => {
     const imageElement = document.createElement("img");
+    const imageDiv = document.createElement("div");
+    const btnDelete = document.createElement("button");
+    btnDelete.innerText = "Eliminar";
+    btnDelete.classList.add("btn", "btn-danger", "m-3");
+    btnDelete.onclick = () => {
+      deleteImage(image._id);
+    }
+    imageDiv.classList.add('border', 'p-3');
     imageElement.src = image.url;
     imageElement.classList.add("imagenItem", "m-3");
-    imagesContainer.appendChild(imageElement);
+    imageElement.id = image._id;
+    imageDiv.appendChild(imageElement);
+    imageDiv.appendChild(btnDelete);
+    imagesContainer.appendChild(imageDiv);
   });
 };
 
@@ -134,4 +145,28 @@ const ocultarSpinner = () => {
   spinner.classList.add("off");
   spinner.classList.remove("on");
 
+}
+
+const deleteImage = async (id) => {
+  try {
+    const res = await fetch(`/api/imagenes/delete/${id}`, {
+      method: "DELETE",
+    });
+    if (res.status === 200) {
+      Swal.fire({
+        title: 'Exito!',
+        text: 'La imagen se eliminó correctamente!',
+        icon: 'success',
+        confirmButtonText: 'Subir otra imagen'
+      });
+      showAllImages();
+    }
+  } catch (error) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Error en el servidor!',
+      icon: 'error',
+      confirmButtonText: 'Volver a intentar'
+    })
+  }
 }
